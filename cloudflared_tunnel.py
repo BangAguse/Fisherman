@@ -5,7 +5,6 @@ import re
 import time
 
 def check_cloudflared():
-    """Memeriksa apakah cloudflared terinstall"""
     try:
         subprocess.run(['cloudflared', '--version'], capture_output=True)
         return True
@@ -13,24 +12,20 @@ def check_cloudflared():
         return False
 
 def get_tunnel_url(process):
-    """Mendapatkan URL tunnel dari output cloudflared"""
     while True:
         line = process.stdout.readline()
         if not line:
             break
         line = line.decode('utf-8').strip()
-        # Mencari URL tunnel dalam output
         if 'https://' in line and '.trycloudflare.com' in line:
             match = re.search(r'https://[^\s]+\.trycloudflare\.com', line)
             if match:
                 return match.group(0)
-        # Mencari pesan error umum
         elif 'error' in line.lower():
             raise Exception(f"Cloudflared error: {line}")
     return None
 
 def start_cloudflared_tunnel(port):
-    """Memulai Cloudflared tunnel"""
     if not check_cloudflared():
         print("\n[X] Cloudflared tidak ditemukan!")
         print("\nUntuk menginstall cloudflared:")
@@ -51,25 +46,26 @@ def start_cloudflared_tunnel(port):
         )
 
         print("\n[⌛] Memulai Cloudflared tunnel...")
-        
-        # Tunggu beberapa detik untuk memastikan tunnel dimulai
+
         time.sleep(3)
         
         tunnel_url = None
         for line in process.stdout:
-            if 'https://' in line and '.trycloudflare.com' in line:
-                match = re.search(r'https://[^\s]+\.trycloudflare\.com', line)
+            if 'https://' in line and 'trycloudflare.com' in line:
+                match = re.search(r'https://[^\s]+', line)
                 if match:
                     tunnel_url = match.group(0)
                     break
             elif 'error' in line.lower():
                 raise Exception(f"Cloudflared error: {line}")
-            print(line.strip())  # Tampilkan output cloudflared
+            print(line.strip())
 
         if tunnel_url:
+            if 'api.trycloudflare.com' in tunnel_url or not tunnel_url.startswith('https://') or len(tunnel_url) < 20:
+                raise Exception(f"URL tunnel tidak valid: {tunnel_url}. Coba update cloudflared atau gunakan mode localhost.")
             print(f"\n[✓] Tunnel berhasil dibuat!")
             print(f"[🌐] URL Tunnel: {tunnel_url}")
-            return process
+            return process, tunnel_url
         else:
             raise Exception("Tidak bisa mendapatkan URL tunnel")
 
@@ -84,11 +80,10 @@ def start_cloudflared_tunnel(port):
         sys.exit(1)
 
 def stop_cloudflared_tunnel(process):
-    """Menghentikan Cloudflared tunnel"""
     if process:
         process.terminate()
         try:
-            process.wait(timeout=5)  # Tunggu proses selesai
+            process.wait(timeout=5)
         except subprocess.TimeoutExpired:
-            process.kill()  # Force kill jika timeout
+            process.kill()
         print("\n[✓] Cloudflared tunnel dihentikan")

